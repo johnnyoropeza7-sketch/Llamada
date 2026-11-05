@@ -237,7 +237,7 @@ function render(){
  if(tab=='a')h+=`<div class=r><span>Fondo de pantalla (foto)</span><label class=b>Subir<input type=file accept="image/*" data-k=bg hidden></label><button data-a=rmk data-k=bg ${have.has('bg')?'':'disabled'}>Quitar</button></div>
 <div class=r><span>Icono propio (opcional)</span><label class=b>Subir<input type=file accept="image/*" data-k=icon hidden></label><button data-a=rmk data-k=icon ${have.has('icon')?'':'disabled'}>Quitar</button></div>
 <div class=r><span>Pausa automática (seg). 0 = tocar</span><input id=gp type=number min=0 max=30 value="${cfg.gap}"></div>
-<p class=m>Código al desbloquear: 4 dígitos = valor (01–13) + palo (1♣ 2♥ 3♠ 4♦) + cualquier dígito. Ej.: 7 de corazones → 0720. Un código inválido tiembla como si fallaras.<br><br>Con la pausa en 0, toca el número en la pantalla de llamada para que suene el siguiente audio.<br><br>Para entrar aquí: mantén pulsada la hora en la pantalla de bloqueo.<br><br>Tus audios, fotos y ajustes se guardan en este teléfono, dentro de la app donde los pongas: configúralo desde el acceso directo de la pantalla de inicio, no desde Safari.<br><br>Si grabas aquí, recarga la app antes de actuar.</p><button class=big data-a=lo style="background:#2c2c2e">Cerrar sesión</button><p class=m style="text-align:center">Aplicación realizada por el mago Camilo, mentalista<br>Derechos reservados © 2026</p>`;
+<p class=m>Código al desbloquear: 4 dígitos = valor (01–13) + palo (1♣ 2♥ 3♠ 4♦) + cualquier dígito. Ej.: 7 de corazones → 0720. Un código inválido tiembla como si fallaras.<br><br>Con la pausa en 0, toca el número en la pantalla de llamada para que suene el siguiente audio.<br><br>Para entrar aquí: mantén pulsada la hora en la pantalla de bloqueo.<br><br>Tus audios, fotos y ajustes se guardan en este teléfono, dentro de la app donde los pongas: configúralo desde el acceso directo de la pantalla de inicio, no desde Safari.<br><br>Si grabas aquí, recarga la app antes de actuar.</p>${localStorage.lla?'<button class=big data-a=adm>Panel de administrador</button>':''}<button class=big data-a=lo style="background:#2c2c2e">Cerrar sesión</button><p class=m style="text-align:center">Aplicación realizada por el mago Camilo, mentalista<br>Derechos reservados © 2026</p>`;
  $('#ad').innerHTML=h}
 async function rec(k){
  if(R){R.stop();return}
@@ -249,7 +249,8 @@ async function pv(k){const b=await get(k);if(!b)return;A.pause();A.onended=null;
 $('#ad').onclick=async e=>{const b=e.target.closest('button');if(!b)return;const d=b.dataset,i=+d.i;
  if(d.t)tab=d.t;else if(d.s)su=+d.s;
  else if(d.a=='x'){go('lk');return}
- else if(d.a=='lo'){localStorage.removeItem('llk');location.reload();return}
+ else if(d.a=='adm'){openAdmin();return}
+ else if(d.a=='lo'){localStorage.removeItem('llk');localStorage.removeItem('lla');(auth?auth.signOut():Promise.resolve()).catch(()=>{}).then(()=>location.reload());return}
  else if(d.a=='rec'){await rec(d.k);return}
  else if(d.a=='pl'){pv(d.k);return}
  else if(d.a=='rmk'){await del(d.k);have.delete(d.k);applyBg();applyIcon()}
@@ -301,21 +302,24 @@ function watch(){
    b('Liberar',()=>d.ref.update({device:null}));
    b('Borrar',()=>confirm('¿Borrar esta clave?')&&d.ref.delete());
    l.append(r)})},()=>{$('#kl').textContent='No se pudo leer. Revisa las reglas de Firebase.'})}
-$('#ro').onclick=()=>{go('am');const u=auth&&auth.currentUser;$('#alog').hidden=!!u;$('#apan').hidden=!u;if(u)watch()};
+function openAdmin(){go('am');const u=auth&&auth.currentUser;$('#alog').hidden=!!u;$('#apan').hidden=!u;if(u)watch()}
+$('#ro').onclick=openAdmin;
 $('#ab').onclick=async()=>{
  try{await auth.signInWithEmailAndPassword($('#ae').value.trim(),$('#ap').value);$('#ap').value='';$('#aerr').textContent='';
-  $('#alog').hidden=true;$('#apan').hidden=false;watch()}
+  localStorage.lla='1';$('#alog').hidden=true;$('#apan').hidden=false;watch()}
  catch(e){$('#aerr').textContent='Datos incorrectos'}};
 $('#aback').onclick=()=>go('lg');
-$('#aout').onclick=()=>{unw&&unw();auth&&auth.signOut();go('lg')};
+$('#aout').onclick=()=>{unw&&unw();localStorage.removeItem('lla');auth&&auth.signOut();go('lg')};
 $('#aopen').onclick=()=>{go('lk');clock()};
 $('#nk').onclick=()=>{
  const id=Array.from(crypto.getRandomValues(new Uint8Array(8)),n=>'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[n%32]).join('');
  fdb.collection('llkeys').doc(id).set({name:$('#nn').value.trim(),device:null,revoked:false,created:Date.now()});
  $('#nn').value='';copyTxt(id)};
 
-/* Arranque: con clave guardada entra directo; revisa en segundo plano si fue revocada */
-if(localStorage.llk){go('lk');
- try{checkKey(localStorage.llk).then(e=>{if(e&&$('#lk').classList.contains('on')){localStorage.removeItem('llk');go('lg');$('#ke').textContent=e}}).catch(()=>{})}catch(e){}}
+/* Arranque: usuario con clave o administrador entran directo; si no, pantalla de ingreso */
+if(localStorage.llk||localStorage.lla){go('lk');
+ if(localStorage.llk)try{checkKey(localStorage.llk).then(e=>{if(e&&$('#lk').classList.contains('on')){localStorage.removeItem('llk');go('lg');$('#ke').textContent=e}}).catch(()=>{})}catch(e){}}
 else go('lg');
+/* Si la sesión de administrador ya no existe, vuelve al ingreso */
+try{auth&&auth.onAuthStateChanged(u=>{if(!u&&localStorage.lla&&!localStorage.llk&&$('#lk').classList.contains('on')){localStorage.removeItem('lla');go('lg')}})}catch(e){}
 </script></body></html>
