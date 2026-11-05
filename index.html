@@ -20,14 +20,16 @@ html,body{margin:0;height:100%;background:#000;color:#fff;font:16px -apple-syste
 #t{font-size:92px;font-weight:600;line-height:1.1}
 #bt{margin-top:auto;display:flex;justify-content:space-between;width:100%;padding:0 14px 22px}
 #bt b{width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.38);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:400}
-.hi{width:134px;height:5px;border-radius:3px;background:rgba(255,255,255,.85);margin:0 0 8px}
+.hi{width:134px;height:5px;border-radius:3px;background:rgba(255,255,255,.85);margin:auto 0 8px}
 .dots{display:flex;gap:18px;margin:6px 0 26px}
 .dots i{width:14px;height:14px;border:1.5px solid #fff;border-radius:50%}
 .dots i.f{background:#fff}
 @keyframes sh{20%{transform:translateX(-14px)}40%{transform:translateX(14px)}60%{transform:translateX(-9px)}80%{transform:translateX(9px)}}
 .sh{animation:sh .4s}
-.pad{display:grid;grid-template-columns:repeat(3,76px);gap:16px 22px}
-.pad b{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:400}
+.pad{display:grid;grid-template-columns:repeat(3,82px);gap:16px 26px}
+.pad b{width:82px;height:82px;border-radius:50%;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:38px;font-weight:300;line-height:1}
+.pad b small{display:block;font-size:10px;letter-spacing:2px;font-weight:600;min-height:12px;margin-top:1px}
+.tx{display:flex;align-items:center;justify-content:center;font-size:17px}
 .pad b:active{background:rgba(255,255,255,.45)}
 .pad b.z{grid-column:2}
 .cb{width:76px;height:76px;border-radius:50%;border:0;display:flex;align-items:center;justify-content:center}
@@ -48,17 +50,36 @@ html,body{margin:0;height:100%;background:#000;color:#fff;font:16px -apple-syste
 .m{font-size:13px;opacity:.7;line-height:1.45}
 .big{width:100%;padding:14px;border:0;border-radius:12px;background:#0a84ff;color:#fff;font-size:17px;margin:12px 0}
 input[type=number],#pf{width:90px;padding:8px;border-radius:8px;border:1px solid #333;background:#1c1c1e;color:#fff;font-size:16px}
+#dn{flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center;text-align:center;word-break:break-all;font-size:40px;font-weight:300;padding:0 10px 26px}
+.pad.dk{grid-template-columns:repeat(3,78px);gap:18px 24px}
+.pad.dk b{width:78px;height:78px;background:#151515;border:1px solid #2b2b2b;-webkit-backdrop-filter:none;backdrop-filter:none}
+.pad.dk b:active{background:#3a3a3c}
+.pad.dk b small.pl{font-size:20px;letter-spacing:0;font-weight:500;min-height:0;margin-top:-2px}
+.pad.dk b i{font-style:normal;font-size:46px;margin-top:10px}
+.crow{margin-top:20px}
+#dc{width:78px;height:78px;background:#377a39;border:1.5px solid #86d58a}
+#dx{display:flex;align-items:center;justify-content:center;font-size:30px;opacity:0}
+.tbw{display:flex;gap:12px;align-items:center;justify-content:center;margin:26px 0 18px}
+.tbp{display:flex;background:#1c1c1e;border:1px solid #2a2a2a;border-radius:34px;padding:4px;width:266px;height:62px}
+.ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;border-radius:30px;position:relative}
+.ti.on{background:#363638;color:#4da3ff}
+.bd{position:absolute;top:0;left:50%;margin-left:6px;background:#ff453a;border-radius:12px;padding:1px 7px;font-size:14px;font-weight:600;font-style:normal}
+.sq{width:60px;height:60px;border-radius:50%;background:#1c1c1e;border:1px solid #2a2a2a;display:flex;align-items:center;justify-content:center}
 </style></head><body>
 
-<div id="lk" class="s on"><div id="d"></div><div id="t"></div><div id="bt"><b>🔦</b><b>📷</b></div><div class="hi"></div></div>
+<div id="lk" class="s on"><div id="d"></div><div id="t"></div><div class="hi"></div></div>
 
-<div id="kp" class="s"><div style="margin-top:12vh;font-size:20px;margin-bottom:22px">Introducir código</div>
-<div class="dots"><i></i><i></i><i></i><i></i></div><div class="pad" id="pd"></div>
-<div id="cc" style="margin-top:auto;margin-bottom:28px;opacity:.8;font-size:17px">Cancelar</div></div>
+<div id="kp" class="s"><div style="margin-top:9vh;font-size:20px;margin-bottom:22px">Introducir código</div>
+<div class="dots"><i></i><i></i><i></i><i></i></div><div class="pad" id="pd"></div></div>
 
-<div id="dl" class="s"><div id="dn" style="margin-top:9vh;font-size:38px;letter-spacing:1px;min-height:48px;text-align:center;word-break:break-all"></div>
-<div class="pad" id="dp" style="margin-top:auto"></div>
-<div style="display:flex;align-items:center;justify-content:center;gap:40px;margin:22px 0 5vh;width:100%"><span style="width:76px"></span><button class="cb gr" id="dc"></button><span id="dx" style="width:76px;text-align:center;font-size:30px;opacity:.8">⌫</span></div></div>
+<div id="dl" class="s"><div id="dn"></div>
+<div class="pad dk" id="dp"></div>
+<div class="pad dk crow"><span></span><button class="cb" id="dc"></button><span id="dx">⌫</span></div>
+<div class="tbw"><div class="tbp">
+<div class="ti"><svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M12 6v6.5H8" stroke="#000" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><em class="bd">106</em>Llamadas</div>
+<div class="ti"><svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="11" fill="#fff"/><circle cx="12" cy="9.5" r="3.6" fill="#000"/><path d="M5.4 19.2c1.3-3.2 3.7-4.5 6.6-4.5s5.3 1.3 6.6 4.5A11 11 0 0112 23a11 11 0 01-6.6-3.8z" fill="#000"/></svg>Contactos</div>
+<div class="ti on"><svg viewBox="0 0 26 30" width="26" height="30" fill="#4da3ff"><circle cx="5" cy="4" r="2.6"/><circle cx="13" cy="4" r="2.6"/><circle cx="21" cy="4" r="2.6"/><circle cx="5" cy="11" r="2.6"/><circle cx="13" cy="11" r="2.6"/><circle cx="21" cy="11" r="2.6"/><circle cx="5" cy="18" r="2.6"/><circle cx="13" cy="18" r="2.6"/><circle cx="21" cy="18" r="2.6"/><circle cx="5" cy="25" r="2.6"/><circle cx="13" cy="25" r="2.6"/><circle cx="21" cy="25" r="2.6"/></svg>Teclado</div>
+</div><div class="sq"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5.5 5.5"/></svg></div></div></div>
 
 <div id="cl" class="s"><div id="cz" style="margin-top:12vh;text-align:center;padding:10px 30px"><div id="cn" style="font-size:32px"></div><div id="cs" style="opacity:.7;margin-top:6px;font-size:18px"></div></div>
 <div class="g"><div><b>🎙</b>silenciar</div><div><b>⌗</b>teclado</div><div><b id="sp">🔊</b>altavoz</div><div><b>＋</b>añadir</div><div><b>▶︎</b>FaceTime</div><div><b>👤</b>contactos</div></div>
@@ -100,10 +121,12 @@ $('#lk').onpointerup=()=>{if($('#lk').classList.contains('on')){buf=[];dots();go
 
 /* ---------- Código: 2 dígitos valor + 1 palo + 1 libre ---------- */
 let buf=[],card=null;
-$('#pd').innerHTML=[1,2,3,4,5,6,7,8,9,0].map(n=>`<b data-n="${n}" class="${n==0?'z':''}">${n}</b>`).join('');
-const dots=()=>$$('.dots i').forEach((e,i)=>e.classList.toggle('f',i<buf.length));
-$('#pd').onclick=e=>{const b=e.target.closest('b');if(!b||buf.length>3)return;buf.push(b.dataset.n);dots();if(buf.length==4)setTimeout(chk,160)};
-$('#cc').onclick=()=>go('lk');
+const LT={2:'ABC',3:'DEF',4:'GHI',5:'JKL',6:'MNO',7:'PQRS',8:'TUV',9:'WXYZ'};
+$('#pd').innerHTML=[1,2,3,4,5,6,7,8,9].map(n=>`<b data-n="${n}">${n}<small>${LT[n]||''}</small></b>`).join('')+'<span class=tx>Emergencia</span><b data-n="0">0<small></small></b><span class=tx id=cc>Cancelar</span>';
+const dots=()=>{$$('.dots i').forEach((e,i)=>e.classList.toggle('f',i<buf.length));const c=$('#cc');if(c)c.textContent=buf.length?'Borrar':'Cancelar'};
+$('#pd').onclick=e=>{
+ if(e.target.id=='cc'){if(buf.length){buf.pop();dots()}else go('lk');return}
+ const b=e.target.closest('b');if(!b||buf.length>3)return;buf.push(b.dataset.n);dots();if(buf.length==4)setTimeout(chk,160)};
 function chk(){const v=+(buf[0]+buf[1]),s=+buf[2];
  if(v>=1&&v<=13&&s>=1&&s<=4){card={v,s};dial()}
  else{const d=$('.dots');d.classList.add('sh');setTimeout(()=>{d.classList.remove('sh');buf=[];dots()},420)}}
@@ -113,8 +136,8 @@ const PD='M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 1
 const PH=`<svg viewBox="0 0 24 24" width="34" height="34" fill="#fff"><path d="${PD}"/></svg>`;
 $('#dc').innerHTML=PH;$('#hg').innerHTML=PH.replace('<svg','<svg style="transform:rotate(135deg)"');
 let num='';
-$('#dp').innerHTML=['1','2','3','4','5','6','7','8','9','*','0','#'].map(n=>`<b data-n="${n}">${n}</b>`).join('');
-const showNum=()=>{$('#dn').textContent=num;$('#dc').style.opacity=num?1:.3};
+$('#dp').innerHTML=['1','2','3','4','5','6','7','8','9','*','0','#'].map(n=>`<b data-n="${n}">${n=='*'?'<i>∗</i>':n}${n=='*'||n=='#'?'':`<small${n=='0'?' class=pl':''}>${n=='0'?'+':(LT[n]||'')}</small>`}</b>`).join('');
+const showNum=()=>{$('#dn').textContent=num;$('#dx').style.opacity=num?.85:0};
 $('#dp').onclick=e=>{const b=e.target.closest('b');if(b&&num.length<15){num+=b.dataset.n;showNum()}};
 $('#dx').onclick=()=>{num=num.slice(0,-1);showNum()};
 function dial(){num='';go('dl');showNum()}
@@ -123,11 +146,11 @@ function dial(){num='';go('dl');showNum()}
 const SIL='data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
 let A=new Audio(),AC,tm,T0,seq=[],ix=0,wait=false,busy=false,alive=false,gt;
 function ring(){AC=new(window.AudioContext||window.webkitAudioContext)();AC.resume();const t=AC.currentTime;
- [0,3].forEach(s=>{const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=425;g.gain.value=.2;o.connect(g);g.connect(AC.destination);o.start(t+s);o.stop(t+s+1.3)})}
+ [0,3,6,9].forEach(s=>{const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=425;g.gain.value=.2;o.connect(g);g.connect(AC.destination);o.start(t+s);o.stop(t+s+1.3)})}
 const stopRing=()=>{try{AC&&AC.close()}catch(e){}AC=null};
 $('#dc').onclick=()=>{if(!num)return;alive=true;A.src=SIL;A.play().catch(()=>{});ring();
  go('cl');$('#cn').textContent=num;$('#cs').textContent='llamando…';$('#sp').classList.remove('on');
- setTimeout(()=>{if(alive)answer()},6300)};
+ setTimeout(()=>{if(alive)answer()},12200)};
 const tick=()=>{const s=Math.floor((Date.now()-T0)/1000);$('#cs').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 function answer(){stopRing();T0=Date.now();$('#sp').classList.add('on');tm=setInterval(tick,500);tick();
  seq=[...cfg.conv.filter(k=>have.has(k)),'card'];ix=0;busy=false;setTimeout(()=>alive&&play(),1200)}
