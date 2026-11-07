@@ -54,13 +54,16 @@ input[type=number],#pf{width:90px;padding:8px;border-radius:8px;border:1px solid
 .pad.dk{grid-template-columns:repeat(3,78px);gap:18px 24px}
 .pad.dk b{width:78px;height:78px;background:#151515;border:1px solid #2b2b2b;-webkit-backdrop-filter:none;backdrop-filter:none}
 .pad.dk b:active{background:#3a3a3c}
-.pad.dk b small.pl{font-size:20px;letter-spacing:0;font-weight:500;min-height:0;margin-top:-2px}
-.pad.dk b i{font-style:normal;font-size:46px;margin-top:10px}
+.pad.dk b{font-weight:400;font-size:39px;padding-bottom:3px}
+.ti svg{flex-shrink:0}
+.pad.dk b small{font-size:11px;letter-spacing:3px;font-weight:600;min-height:12px;margin-top:2px;padding-left:3px}
+.pad.dk b small.pl{font-size:20px;letter-spacing:0;font-weight:500;min-height:0;margin-top:3px;padding-left:0}
+.pad.dk b i{font-style:normal;font-size:36px;margin-top:8px}
 .crow{margin-top:20px}
 #dc{width:78px;height:78px;background:#377a39;border:1.5px solid #86d58a}
 #dx{display:flex;align-items:center;justify-content:center;font-size:30px;opacity:0}
-.tbw{display:flex;gap:12px;align-items:center;justify-content:center;margin:26px 0 18px}
-.tbp{display:flex;background:#1c1c1e;border:1px solid #2a2a2a;border-radius:34px;padding:4px;width:266px;height:62px}
+.tbw{display:flex;gap:9px;align-items:center;justify-content:center;margin:49px 0 calc(21px - env(safe-area-inset-bottom,0px))}
+.tbp{display:flex;background:#1c1c1e;border:1px solid #2a2a2a;border-radius:34px;padding:4px;width:277px;height:62px}
 .ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;border-radius:30px;position:relative}
 .ti.on{background:#363638;color:#4da3ff}
 .bd{position:absolute;top:0;left:50%;margin-left:6px;background:#ff453a;border-radius:12px;padding:1px 7px;font-size:14px;font-weight:600;font-style:normal}
@@ -92,7 +95,7 @@ input[type=number],#pf{width:90px;padding:8px;border-radius:8px;border:1px solid
 <div class="pad dk" id="dp"></div>
 <div class="pad dk crow"><span></span><button class="cb" id="dc"></button><span id="dx">⌫</span></div>
 <div class="tbw"><div class="tbp">
-<div class="ti"><svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M12 6v6.5H8" stroke="#000" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><em class="bd">106</em>Llamadas</div>
+<div class="ti"><svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M12 6v6.5H8" stroke="#000" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><em class="bd">108</em>Llamadas</div>
 <div class="ti"><svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="11" fill="#fff"/><circle cx="12" cy="9.5" r="3.6" fill="#000"/><path d="M5.4 19.2c1.3-3.2 3.7-4.5 6.6-4.5s5.3 1.3 6.6 4.5A11 11 0 0112 23a11 11 0 01-6.6-3.8z" fill="#000"/></svg>Contactos</div>
 <div class="ti on"><svg viewBox="0 0 26 30" width="26" height="30" fill="#4da3ff"><circle cx="5" cy="4" r="2.6"/><circle cx="13" cy="4" r="2.6"/><circle cx="21" cy="4" r="2.6"/><circle cx="5" cy="11" r="2.6"/><circle cx="13" cy="11" r="2.6"/><circle cx="21" cy="11" r="2.6"/><circle cx="5" cy="18" r="2.6"/><circle cx="13" cy="18" r="2.6"/><circle cx="21" cy="18" r="2.6"/><circle cx="5" cy="25" r="2.6"/><circle cx="13" cy="25" r="2.6"/><circle cx="21" cy="25" r="2.6"/></svg>Teclado</div>
 </div><div class="sq"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5.5 5.5"/></svg></div></div></div>
